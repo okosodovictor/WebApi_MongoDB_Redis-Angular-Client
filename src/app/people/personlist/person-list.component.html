@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <br />
+        <br />
+        <h1>{{pageTitle}}</h1>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>gender</th>
+                        <th>eyeColor</th>
+                        <th>company</th>
+                        <th>greeting</th>
+                        <th>favoriteFruit</th>
+                        <th>picture</th>
+                        <th>isActive</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let person of pageResponse.people | paginate:{itemsPerPage: 10,currentPage:page,  totalItems: pageResponse.total}">
+
+                        <td>{{person._id}}</td>
+                        <td>{{person.name}}</td>
+                        <td>{{person.gender}}</td>
+                        <td>{{person.eyeColor}}</td>
+                        <td>{{person.company}}</td>
+                        <td>{{person.greeting}}</td>
+                        <td>{{person.favoriteFruit}}</td>
+                        <img [src]="person.picture">
+                        <td>{{person.isActive}}</td>
+                        <td>
+                            <button type="button" class="btn btn-info" [routerLink]="['/people', person._id]">Detail</button></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" (click)="deletePerson(person._id)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

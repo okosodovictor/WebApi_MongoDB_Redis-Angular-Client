@@ -1,0 +1,114 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <br />
+        <br />
+        <br />
+        <h2>
+            <span>{{pageTitle}}</span>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <form (ngSumbit)="onSubmit(Personform)" #PersonForm="ngForm" novalidate>
+            <div class="col-centered" *ngIf="person != null">
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="name">Person Name</label>
+                        <input type="text" class="form-control col-md-6" id="nameId" name="name" [(ngModel)]="person.name" [disabled]="!isEditMode">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="gender">Gender</label>
+                        <input type="text" class="form-control col-md-6" id="gender" name="gender" [(ngModel)]="person.gender" [disabled]="!isEditMode">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="eyeColor">Eye eyeColor</label>
+                        <input type="text" class="form-control col-md-6" id="eyeColor" name="eyeColor" [(ngModel)]="person.eyeColor" [disabled]="!isEditMode">
+                    </div>
+                </div>
+
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="company">Company</label>
+                        <input type="text" class="form-control col-md-6" id="companyId" name="company" [(ngModel)]="person.company" [disabled]="!isEditMode">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="greeting">Greeting</label>
+                        <input type="text" class="form-control col-md-6" id="greetingId" name="greeting" [(ngModel)]="person.greeting" [disabled]="!isEditMode">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="favoriteFruit">Favorite Fruit</label>
+                        <input type="text" class="form-control col-md-6" id="favoriteFruitId" name="favoriteFruit" [(ngModel)]="person.favoriteFruit" [disabled]="!isEditMode">
+                    </div>
+                </div>
+
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="col-md-6">Email</p>
+                        <input type="text" class="form-control col-md-6" id="emailId" name="email" [(ngModel)]="person.email" [disabled]="!isEditMode">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="phone">Phone</label>
+                        <input type="text" class="form-control col-md-6" id="phoneId" name="phone" [(ngModel)]="person.phone" [disabled]="!isEditMode">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="address">Address</label>
+                        <input type="text" class="form-control col-md-6" id="addressId" name="address" [(ngModel)]="person.address" [disabled]="!isEditMode">
+                    </div>
+                </div>
+
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="about">About</label>
+                        <input type="text" class="form-control col-md-6" id="aboutId" name="about" [(ngModel)]="person.about" [disabled]="!isEditMode">
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="balance">Balance</label>
+                        <input type="text" class="form-control col-md-6" id="balanceId" name="balance" [(ngModel)]="person.balance" [disabled]="!isEditMode">
+                    </div>
+                </div>
+                <hr />
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <h4>My Friends</h4>
+                        <ul class="friends">
+                            <li *ngFor="let frnd of person.friends">
+                                <span class="badge">{{frnd.id}}</span> {{frnd.name}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <h4>My Tags</h4>
+                        <ul class="friends">
+                            <li *ngFor="let tag of person.tags">
+                                <span class="badge">{{tag}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='panel-footer'>
+        <a class='btn btn-primary' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+
+        <span *ngIf="!isEditMode">
+      <button class="btn btn-primary" type="button" style="width:110px;margin-right:10px" (click)="enableEditMode()">
+        Edit
+      </button>
+    </span>
+        <button *ngIf="isEditMode" type="submit" class="btn btn-primary" [disabled]="(!Personform.form.valid)" (click)="onSubmit(Personform)">
+      Save
+    </button>
+
+        <button *ngIf="isEditMode" type="submit" class="btn btn-primary" [disabled]="(!Personform.form.valid)" (click)="refresh(person._id)">
+      cancel
+    </button>
+    </div>
+</div>

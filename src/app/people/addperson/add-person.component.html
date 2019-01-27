@@ -1,0 +1,81 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <br />
+        <br />
+        <br />
+        <h2>
+            <span>{{pageTitle}}</span>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <form (ngSumbit)="onSubmit(Personform)" #PersonForm="ngForm" novalidate>
+            <div class="col-centered" *ngIf="person != null">
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="name">Person Name</label>
+                        <input type="text" class="form-control col-md-6" id="nameId" name="name" [(ngModel)]="person.name">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="gender">Gender</label>
+                        <input type="text" class="form-control col-md-6" id="gender" name="gender" [(ngModel)]="person.gender">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="eyeColor">Eye eyeColor</label>
+                        <input type="text" class="form-control col-md-6" id="eyeColor" name="eyeColor" [(ngModel)]="person.eyeColor">
+                    </div>
+                </div>
+
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="company">Company</label>
+                        <input type="text" class="form-control col-md-6" id="companyId" name="company" [(ngModel)]="person.company">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="greeting">Greeting</label>
+                        <input type="text" class="form-control col-md-6" id="greetingId" name="greeting" [(ngModel)]="person.greeting">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="favoriteFruit">Favorite Fruit</label>
+                        <input type="text" class="form-control col-md-6" id="favoriteFruitId" name="favoriteFruit" [(ngModel)]="person.favoriteFruit">
+                    </div>
+                </div>
+
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="col-md-6">Email</p>
+                        <input type="text" class="form-control col-md-6" id="emailId" name="email" [(ngModel)]="person.email">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="phone">Phone</label>
+                        <input type="text" class="form-control col-md-6" id="phoneId" name="phone" [(ngModel)]="person.phone">
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="address">Address</label>
+                        <input type="text" class="form-control col-md-6" id="addressId" name="address" [(ngModel)]="person.address">
+                    </div>
+
+                </div>
+
+                <div class="row row-size-70">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="col-md-6" for="about">About</label>
+                        <input type="text" class="form-control col-md-6" id="aboutId" name="about" [(ngModel)]="person.about">
+                    </div>
+                </div>
+                <div class="row row-size-70">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='panel-footer'>
+        <button type="submit" class="btn btn-success" [disabled]="(!Personform.form.valid)" (click)="onSubmit(Personform)">
+      submit
+    </button>
+    </div>
+</div>
